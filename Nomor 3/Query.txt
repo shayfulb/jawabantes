@@ -1,0 +1,29 @@
+SELECT
+	t.`id_transaksi`,
+	t.`tanggal_transaksi`,
+	t.`due_date_pengiriman`,
+	b.`alamat`,
+	c.`nama_barang`,
+	d.`merk_barang`,
+	e.`status`,
+	f.`created_date` AS tanggal_pemesanan,
+	g.`created_date` AS tanggal_pengiriman,
+	h.`created_date` AS tanggal_penerimaan
+FROM
+	`t_transaksi` t
+	JOIN `t_transaksi_detail` a ON t.`id_transaksi`=a.`id_transaksi`
+	JOIN t_master_alamat b ON t.`id_master_alamat`=b.`id_master_alamat`
+	JOIN t_master_barang c ON a.`id_master_barang`=c.`id_master_barang`
+	JOIN t_merk_barang d ON c.`id_merk_barang`=d.`merk_barang`
+	JOIN t_transaksi_status e ON t.`id_transaksi_status`=e.`id_transaksi_status`
+	LEFT JOIN `t_transaksi_log` f ON t.`id_transaksi`=f.`id_transaksi` AND f.`id_transaksi_status`=1
+	LEFT JOIN `t_transaksi_log` g ON t.`id_transaksi`=g.`id_transaksi` AND g.`id_transaksi_status`=2
+	LEFT JOIN `t_transaksi_log` h ON t.`id_transaksi`=h.`id_transaksi` AND h.`id_transaksi_status`=3
+WHERE
+	t.`id_transaksi_status`NOT IN (3) AND t.`due_date_pengiriman` < CURDATE();
+	
+
+penjelasan id_transaksi_status
+status 1 Ketika user pdsi melakukan pemesanan
+status 2 Ketika xyz company melakukan pengiriman terhadap pesanan user pdsi
+status 3 Ketika user pdsi kantor area melakukan pengerimaan barang
