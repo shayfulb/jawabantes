@@ -1,0 +1,6 @@
+Penjelasan Flowchart :
+1. User PDSI melakukan input transaksi pemesanan dengan menginputkan data Alamat, due date pengiriman, barang dan qty pengiriman,
+setelah berhasil submit maka status akan menjadi "Pemesanan"
+2. User XYZ Company melakukan input transaksi pengiriman dengan ketentuan data yang sudah diinputkan dari user pdsi, setelah berhasil
+disubmit maka status akan mejadi "Pengiriman"
+3. User PDSI Kantor Area akan melakukan input transaksi penerimaan barang dengan data yang sudah diinputkan dari user pdsi dan sudh dilakukan pengiriman oleh user xyz company, setelah berhasil disubmit maka status akan menjadi "Penerimaan"
