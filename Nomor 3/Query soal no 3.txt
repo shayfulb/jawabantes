@@ -55,4 +55,4 @@ WHERE
 penjelasan id_transaksi_status
 status 1 Ketika user pdsi melakukan pemesanan
 status 2 Ketika xyz company melakukan pengiriman terhadap pesanan user pdsi
-status 3 Ketika user pdsi kantor area melakukan pengerimaan barang
+status 3 Ketika user pdsi kantor area melakukan penerimaan barang
